@@ -66,6 +66,12 @@ export default function RootLayout({
               >
                 <UserIcon /> 发布页面
               </Link>
+              <Link
+                href="/music"
+                className="flex items-center gap-2 hover:bg-muted rounded-full w-full p-4"
+              >
+                <UserIcon /> 音乐
+              </Link>
               <Button className="flex items-center gap-2 hover:bg-primary/50 rounded-full w-full h-[48px]">
                 发帖
               </Button>
