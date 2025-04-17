@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { HomeIcon, PlusIcon, UserIcon } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,23 +29,45 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        // Add overflow-hidden class
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden`}
       >
         {/* Add fixed header */}
-        <header className="fixed top-0 w-full bg-white shadow h-[72px]">
-          {/* Placeholder div inside header */}
-          <div className="bg-primary-500 w-[68px] h-[32px]">xxxx</div>
+        {/* Update header className */}
+        <header className="fixed top-0 w-full shadow bg-background h-[72px] px-8 flex items-center justify-between z-10">
+          <div className="bg-primary-500 w-[68px] h-[32px] bg-primary text-white rounded-full flex items-center justify-center cursor-pointer">
+            <Link href="/">小红书</Link>
+          </div>
+          <Input
+            placeholder="搜索"
+            className="w-[300px] h-[32px] rounded-full focus-visible:ring-0 focus-visible:ring-shadow-none focus-visible:outline-none"
+          />
+          <div className="flex items-center gap-4">
+            <Link href="/">创作中心</Link>
+            <Link href="/">业务合作</Link>
+          </div>
         </header>
         {/* Add main content area with flex layout */}
-        <main className="flex h-[calc(100vh_-_72px)] pt-[72px]"> {/* Add padding-top to avoid overlap with fixed header */}
+        {/* Change pt-[72px] to mt-[72px] */}
+        <main className="flex h-[calc(100vh_-_72px)] mt-[72px]">
           {/* Add sidebar */}
-          <div className="sidebar w-40 bg-gray-100">左侧区域1111
-          <Button>Button</Button>
-          <span className="text-primary-500">xxxxx</span>
-          <div className="bg-background">测试背景色</div>
+          {/* Update sidebar content and add h-full */}
+          <div className="sidebar h-full w-40 bg-gray-100">
+            {/* <Button className="mt-4">按钮</Button> */}
+            {/* Add new div for links with flex layout */}
+            <div className="text-primary-500 flex flex-col items-start justify-center gap-4 mt-4 px-4">
+              <Link href="/" className="flex item-center gap-2">
+                <HomeIcon/>首页
+              </Link>
+              <Link href="/publish" className="flex item-center gap-2">
+                <UserIcon/>发布页面
+              </Link>
+            </div>
+            {/* Remove previous span and div */}
           </div>
           {/* Main content area that takes remaining space */}
-          <div className="flex-1">{children}</div>
+          {/* Add h-full and overflow-y-auto */}
+          <div className="flex-1 h-full overflow-y-auto">{children}</div>
         </main>
       </body>
     </html>
