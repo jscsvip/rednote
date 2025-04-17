@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Button } from "@/components/ui/button";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,22 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* Add fixed header */}
+        <header className="fixed top-0 w-full bg-white shadow h-[72px]">
+          {/* Placeholder div inside header */}
+          <div className="bg-primary-500 w-[68px] h-[32px]">xxxx</div>
+        </header>
+        {/* Add main content area with flex layout */}
+        <main className="flex h-[calc(100vh_-_72px)] pt-[72px]"> {/* Add padding-top to avoid overlap with fixed header */}
+          {/* Add sidebar */}
+          <div className="sidebar w-40 bg-gray-100">左侧区域1111
+          <Button>Button</Button>
+          <span className="text-primary-500">xxxxx</span>
+          <div className="bg-background">测试背景色</div>
+          </div>
+          {/* Main content area that takes remaining space */}
+          <div className="flex-1">{children}</div>
+        </main>
       </body>
     </html>
   );
