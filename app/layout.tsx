@@ -52,17 +52,24 @@ export default function RootLayout({
         <main className="flex h-[calc(100vh_-_72px)] mt-[72px]">
           {/* Add sidebar */}
           {/* Update sidebar content and add h-full */}
-          <div className="sidebar h-full w-40 bg-gray-100">
-            {/* <Button className="mt-4">按钮</Button> */}
-            {/* Add new div for links with flex layout */}
+          <div className="h-full w-[266px] bg-background shadow">
             <div className="text-primary-500 flex flex-col items-start justify-center gap-4 mt-4 px-4">
-              <Link href="/" className="flex item-center gap-2">
-                <HomeIcon/>首页
+              <Link
+                href="/"
+                className="flex items-center gap-2 hover:bg-muted rounded-full w-full p-4"
+              >
+                <HomeIcon /> 首页
               </Link>
-              <Link href="/publish" className="flex item-center gap-2">
-                <UserIcon/>发布页面
+              <Link
+                href="/publish"
+                className="flex items-center gap-2 hover:bg-muted rounded-full w-full p-4"
+              >
+                <UserIcon /> 发布页面
               </Link>
-            </div>
+              <Button className="flex items-center gap-2 hover:bg-primary/50 rounded-full w-full h-[48px]">
+                发帖
+              </Button>
+          </div>
             {/* Remove previous span and div */}
           </div>
           {/* Main content area that takes remaining space */}
