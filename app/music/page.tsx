@@ -4,6 +4,7 @@ import { playlists } from "@/data/playlists";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
 import { PlusCircledIcon } from '@radix-ui/react-icons';
+import { PodcastTabContent } from '@/components/music/PodcastTabContent'; // Import the new component
 
 export default function MusicPage() {
   return (
@@ -44,11 +45,12 @@ export default function MusicPage() {
                     >
                       music
                     </TabsContent>
-                    <TabsContent 
-                    value="podcasts"
-                    className="h-full flex-col border-none p-0 data-[state=active]:flex"
+                    <TabsContent
+                      value="podcasts"
+                      className="border-none p-0 outline-none"
                     >
-                      postcasts
+                      {/* Use the new component here */}
+                      <PodcastTabContent />
                     </TabsContent>
                 </Tabs>
 
