@@ -1,4 +1,4 @@
-import Menu from '@/components/menu'
+import Menu from '@/components/music/menu'
 
 export default function MusicPage() {
   return (
