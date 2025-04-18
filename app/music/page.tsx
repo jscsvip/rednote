@@ -1,4 +1,6 @@
 import Menu from '@/components/music/menu'
+import { Sidebar } from '@/components/music/sidebar';
+import { playlists } from "@/data/playlists";
 
 export default function MusicPage() {
   return (
@@ -9,7 +11,8 @@ export default function MusicPage() {
         <div className="bg-background h-full">
           <div className="grid lg:grid-cols-5 h-full">
             <div className="hidden lg:block p-4 border-r"> {/* Added border-r for visual separation */}
-              SIDEBAR
+              <Sidebar playlists={playlists} className="hidden lg:block" />
+
             </div>
              
             <div className="col-span-5 lg:col-span-4">
