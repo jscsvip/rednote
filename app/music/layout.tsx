@@ -17,7 +17,7 @@ interface ExamplesLayoutProps {
 export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
   return (
   
-        <div className="container relative">
+        <div className="relative">
           <section>
             <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
               {children}
