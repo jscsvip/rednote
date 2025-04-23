@@ -10,8 +10,11 @@ import { PodcastTabContent } from '@/components/music/PodcastTabContent';
 import { MusicTabHeader } from '@/components/music/MusicTabHeader'; // Import the new component
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
-import { listenNowAlbums } from '@/data/albums';
+import { listenNowAlbums, madeForYouAlbums } from '@/data/albums';
 import { AlbumArtwork } from '@/components/music/album-artwork';
+// Remove the specific ListenNowHeader import
+// import { ListenNowHeader } from '@/components/music/ListenNowHeader';
+import { SectionHeader } from '@/components/music/SectionHeader'; // Import the new reusable component
 
 export default function MusicPage() {
   return (
@@ -39,16 +42,12 @@ export default function MusicPage() {
                   value="music"
                   className="border-none p-0 outline-none"
                 >
-                    <div className="flex items-center justify-between">
-                        <div className="space-y-1">
-                          <h2 className="text-2xl font-semibold tracking-tight">
-                            Listen Now
-                          </h2>
-                          <p className="text-sm text-muted-foreground">
-                            Top picks for you. Updated daily.
-                          </p>
-                        </div>
-                      </div>
+                    {/* Use the new reusable component for "Listen Now" */}
+                    <SectionHeader
+                      title="Listen Now"
+                      description="Top picks for you. Updated daily."
+                    />
+                    {/* Removed the old specific header div */}
                       <Separator className="my-4" />
                       <div className="relative">
                         <ScrollArea>
@@ -67,13 +66,27 @@ export default function MusicPage() {
                           <ScrollBar orientation="horizontal" />
                         </ScrollArea>
                       </div>
-                      <div className="mt-6 space-y-1">
-                        <h2 className="text-2xl font-semibold tracking-tight">
-                          Made for You
-                        </h2>
-                        <p className="text-sm text-muted-foreground">
-                          Your personal playlists. Updated daily.
-                        </p>
+                    <SectionHeader
+                      title="Made for You"
+                      description="Your personal playlists. Updated daily."
+                    />
+                        <Separator className="my-4" />
+                      <div className="relative">
+                        <ScrollArea>
+                          <div className="flex space-x-4 pb-4">
+                            {madeForYouAlbums.map((album) => (
+                              <AlbumArtwork
+                                key={album.name}
+                                album={album}
+                                className="w-[150px]"
+                                aspectRatio="square"
+                                width={150}
+                                height={150}
+                              />
+                            ))}
+                          </div>
+                          <ScrollBar orientation="horizontal" />
+                        </ScrollArea>
                       </div>
                 </TabsContent>
                 <TabsContent
